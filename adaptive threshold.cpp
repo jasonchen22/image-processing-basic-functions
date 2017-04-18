@@ -1,6 +1,15 @@
 
+using namespace cv;
+using namespace std;
 
-void adaptThresh(Mat src, Mat& des, double T, int blkSize)
+/** @brief adaptive thresholding using the integral image				
+
+@param src input image: 8-bit unsignd CV_8UC1
+@param des output binary image: 8-bit unsignd CV_8UC1 
+@param T threshold value at 0 ~ 1 for binarizing
+@param blkSize block size for blockwise thresholding
+*/
+void adaptThreshByIntegral(Mat src, Mat& des, double T, int blkSize)
 {
 	unsigned long* integralImg = 0;
 	int i, j;
@@ -9,7 +18,6 @@ void adaptThresh(Mat src, Mat& des, double T, int blkSize)
 	int index;
 	int x1, y1, x2, y2;
 	int s2 = src.cols / blkSize / 2;
-	//float T = 0.05f;
 
 	des = Mat::zeros(src.size(), CV_8UC1);
 
@@ -66,4 +74,6 @@ void adaptThresh(Mat src, Mat& des, double T, int blkSize)
 }
 
 // example
-adaptThresh(gima, ima2, 0.03, 16);
+Mat image, binImg;
+adaptThreshByIntegral(image, binImg, 0.1, 8);
+
