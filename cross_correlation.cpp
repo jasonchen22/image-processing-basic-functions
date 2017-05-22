@@ -43,3 +43,4 @@ double cross_correlation(Mat img1, Mat img2, bool isbinary)
 
 	return corr;
 }
+
