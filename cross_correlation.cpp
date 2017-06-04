@@ -12,15 +12,16 @@ double cross_correlation(Mat img1, Mat img2, bool isbinary)
 {
 	double corr;
 
+	Scalar img1_avg, img2_avg;
 	if (isbinary) {
 		// in the case with binary image
-		Scalar img1_avg = Scalar(128, 0, 0);
-		Scalar img2_avg = Scalar(128, 0, 0);
+		img1_avg = Scalar(128, 0, 0);
+		img2_avg = Scalar(128, 0, 0);
 	}
 	else {
 		// in the case with gray image
-		Scalar img1_avg = mean(img1);
-		Scalar img2_avg = mean(img2);
+		img1_avg = mean(img1);
+		img2_avg = mean(img2);
 	}
 
 	double sum_img1_img2 = 0;
